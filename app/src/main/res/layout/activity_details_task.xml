@@ -1,10 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    tools:context=".DetailsTaskActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".DetailsTaskActivity">
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bar"
+        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/MenuStyle"
+        tools:ignore="MissingConstraints" />
+    <RelativeLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/show_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/title_view"
+            android:layout_marginTop="15dp"
+            tools:text="content"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_view"
+            android:text="@string/complete"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:layout_margin="10dp"/>
+        <CheckBox
+            android:id="@+id/check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/complete"
+            android:layout_below="@id/show_title"
+            android:layout_marginTop="20dp"/>
+        <TextView
+            android:id="@+id/assigned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/assigned"
+            android:layout_below="@id/complete"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/user_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/assigned"
+            android:layout_below="@id/complete"
+            tools:text="Unassigned"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp"/>
+    </RelativeLayout>
+    <Spinner
+        android:id="@+id/assign_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:prompt="@string/spinnerFirst">
+    </Spinner>
 
-</android.support.constraint.ConstraintLayout>
+
+</LinearLayout>
