@@ -10,5 +10,6 @@
     <string name="spinnerLast">Unassigned</string>
     <string name="assigned">Assigned to:</string>
     <string name="todo">TODO</string>
+    <string name="save">Save</string>
 
 </resources>

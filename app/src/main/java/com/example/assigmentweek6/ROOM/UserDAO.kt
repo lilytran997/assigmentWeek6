@@ -5,7 +5,7 @@ import android.arch.persistence.room.*
 @Dao
 interface UserDAO {
     @Query("SELECT * FROM user")
-    fun getAll():User
+    fun getAll():List<User>
 
     @Query("SELECT * FROM user WHERE id=:id")
     fun findById(id: Int): User
@@ -26,5 +26,5 @@ interface UserDAO {
     fun update(user: User)
 
     @Query("DELETE FROM user")
-    fun deleteAllTask()
+    fun deleteAllUser()
 }

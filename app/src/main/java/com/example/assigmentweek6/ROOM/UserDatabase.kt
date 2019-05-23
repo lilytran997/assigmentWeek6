@@ -5,7 +5,7 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 
-@Database(entities = arrayOf(User::class), version = 3)
+@Database(entities = [User::class], version = 3)
 abstract class UserDatabase : RoomDatabase() {
     abstract fun userDAO(): UserDAO
 

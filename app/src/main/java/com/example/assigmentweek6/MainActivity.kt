@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar!!.title = "Room"
 
-        task_list.layoutManager = LinearLayoutManager(this@MainActivity) as RecyclerView.LayoutManager
+        task_list.layoutManager = LinearLayoutManager(this@MainActivity) as RecyclerView.LayoutManager?
         taskAdapter = TaskAdapter(tasks,this@MainActivity)
         task_list.adapter = taskAdapter
         taskAdapter.setListenner(itemClick)
@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
 
         //setup database
         initTaskDatabase()
-        getTask()
         db  = TaskDatabase.invoke(this)
         add_task.setOnClickListener{
             val tasknew = Task()
@@ -52,6 +51,7 @@ class MainActivity : AppCompatActivity() {
             tasknew.id = id.toInt()
             taskAdapter.appendData(tasknew)
         }
+        getTask()
 
 
     }
@@ -116,16 +116,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-
+        super.onOptionsItemSelected(item)
         when (item!!.itemId){
             R.id.user_add ->{
                 val intent = Intent(this@MainActivity,UsersActivity::class.java)
                 startActivity(intent)
-                finish()
                 return true
-            }
-            else -> {
-                super.onOptionsItemSelected(item)
             }
         }
         return false
@@ -142,10 +138,6 @@ class MainActivity : AppCompatActivity() {
 
                 if (position != null && task_item.description != null && task_item.completed != null && task_item.userid != null) {
                     updateItem(position, Task(task_item.id, task_item.description, task_item.completed, task_item.userid))
-                    Log.e(
-                        "Main_onActivityResult: ",
-                        "user:" + task_item.userid + " - id:" + task_item.id.toString() + " - com:" + task_item.completed.toString()
-                    )
                 }
             } else {
                 if (position != null)

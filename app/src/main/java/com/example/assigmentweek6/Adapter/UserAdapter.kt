@@ -37,7 +37,7 @@ class UserAdapter(var items:ArrayList<User>, val context: Context): RecyclerView
 
     fun appendData(newUserAdded: User) {
         this.items.add(newUserAdded)
-        notifyItemInserted(items.size - 1)
+        notifyItemInserted(items.size-1)
     }
 
 
